@@ -1,13 +1,15 @@
 <?php
-class App{
-    private $routes =[];
 
-    static public function route(string $path, callable $callback) {
+
+
+    /**$routes =[];
+
+    function route(string $path, callable $callback) {
         global $routes;
         $routes[$path] = $callback;
     }
 
-    static public function run() {
+    function run() {
         global $routes;
         $uri = $_SERVER['REQUEST_URI'];
         $found = false;
@@ -21,5 +23,5 @@ class App{
             $notFoundCallback = $routes['/404'];
             $notFoundCallback();
         }
-    }
-}
+    }**/
+
