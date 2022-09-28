@@ -31,9 +31,18 @@ class Meeting {
         return $stmt->fetchAll();
     }
 
-    public function modify($id, $params=[])
+    public function update($data)
     {
-
+        $sql = 'UPDATE meetings SET title=:title, country=:country, date=:date, latitude=:latitude,
+                    longitude=:longitude WHERE id=:id';
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->bindParam(':id', $data['id']);
+        $stmt->bindParam(':title', $data['title']);
+        $stmt->bindParam(':date', $data['date']);
+        $stmt->bindParam(':country', $data['country']);
+        $stmt->bindParam(':latitude', $data['latitude']);
+        $stmt->bindParam(':longitude', $data['longitude']);
+        $stmt->execute();
     }
 
     public function delete($id):void

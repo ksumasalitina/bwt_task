@@ -13,4 +13,6 @@ $router->get('/details',MeetController::class .'::details');
 
 $router->get('/change_page', MeetController::class .'::changePage');
 
+$router->post('/change', MeetController::class .'::change');
+
 $router->run();

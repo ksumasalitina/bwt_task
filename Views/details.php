@@ -31,8 +31,8 @@
         <h4 class="f-inline"><em>Address: </em></h4>
         <p class="f-inline"><?=$el['latitude']?>, <?= $el['longitude']?></p>
     </div>
-    <div id="lat" style="display: none"><?=$el['latitude']?></div>
-        <div id="lng" style="display: none"><?=$el['longitude']?></div>
+    <input id="lat" type="hidden" value="<?=$el['latitude']?>">
+    <input id="lng" type="hidden" value="<?=$el['longitude']?>">
     <div class="ml adr">
         <h4 class="f-inline"><em>Country: </em></h4>
         <p class="f-inline"><?=$el['country']?></p>
