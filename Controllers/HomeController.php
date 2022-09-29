@@ -6,7 +6,7 @@ use App\Controller;
 
 class HomeController extends Controller
 {
-    public function showPage()
+    public function showPage() //Отображение главной страницы
     {
         $model = new Meeting();
         $data = $model->all();

@@ -1,11 +1,9 @@
 <?php
 namespace Models;
-//require_once 'src/connection.php';
 
 class Meeting {
 
-
-    public function connect()
+    public function connect() //Подключение к БД
     {
         try {
             $connection = new \PDO("mysql:host=localhost;dbname=bwt_task",
@@ -17,13 +15,13 @@ class Meeting {
         return $connection;
     }
 
-    public function all()
+    public function all() //Получение всех данных таблицы
     {
         $sql =  'SELECT * FROM meetings';
         return $this->connect()->query($sql)->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-    public function get($id)
+    public function get($id) //Получение конкретной записи
     {
         $sql =  'SELECT * FROM meetings WHERE id=:id';
         $stmt = $this->connect()->prepare($sql);
@@ -31,7 +29,7 @@ class Meeting {
         return $stmt->fetchAll();
     }
 
-    public function update($data)
+    public function update($data):void //Изменение данных
     {
         $sql = 'UPDATE meetings SET title=:title, country=:country, date=:date, latitude=:latitude,
                     longitude=:longitude WHERE id=:id';
@@ -45,7 +43,14 @@ class Meeting {
         $stmt->execute();
     }
 
-    public function delete($id):void
+    public function create($data):void //Добавление строки
+    {
+        $sql = 'INSERT INTO meetings (title, country, date, latitude, longitude)
+        VALUES (:title, :country, :date, :latitude, :longitude)';
+        $this->connect()->prepare($sql)->execute($data);
+    }
+
+    public function delete($id):void //Удаление строки
     {
         $sql='DELETE FROM meetings WHERE id=:id';
         $this->connect()->prepare($sql)->execute($id);

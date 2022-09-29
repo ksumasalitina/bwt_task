@@ -1,1 +1,1 @@
-<h1>404</h1>
+<h1 align="center">404 Page not Found</h1>

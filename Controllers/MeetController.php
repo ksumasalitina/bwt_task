@@ -2,6 +2,7 @@
 namespace Controllers;
 use Models\Meeting;
 use App\Controller;
+
 class MeetController extends Controller
 {
     public function delete($request)
@@ -32,8 +33,15 @@ class MeetController extends Controller
         header('Location: http://localhost:8888/');
     }
 
-    public function createPage($request){
+    public function createPage(){
         return $this->render('create');
+    }
+
+    public function create($request){
+        $model = new Meeting();
+        $request['date'] = date('Y/m/d H:m', strtotime($request['date']));
+        $model->create($request);
+        header('Location: http://localhost:8888/');
     }
 }
 

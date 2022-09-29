@@ -10,13 +10,15 @@
     <style><?php include 'style/app.css'?></style>
     <title>Главная</title>
 </head>
-
+<!--Подключение шапки страницы-->
 <header><?php include_once 'layout/header.php'; ?></header>
 
 <body>
+<!--Заголовок-->
 <div>
     <h1 class="h-home">List of meetings</h1>
 </div>
+<!--Таблица со всеми конференциями-->
 <table class="table table-width table-striped"">
     <thead class="thead-dark">
     <tr>
@@ -34,16 +36,19 @@
         <td><?= date('d/m/Y', strtotime($el['date'])); ?>,
             <b><?= date('H:m', strtotime($el['date'])); ?></b></td>
         <td width="20%">
+            <!--Кнопка для просмотра информации -->
             <form action="/details" method="get" class="f-inline">
                 <input type="hidden" value="<?= $el['id']?>" name="id">
                 <button class="btn btn-info">Details</button>
             </form>
 
+            <!--Кнопка для изменения конференции-->
             <form action="/change_page" method="get" class="f-inline">
                 <input type="hidden" value="<?= $el['id']?>" name="id">
                 <button class="btn btn-warning" href="#">Modify</button>
             </form>
 
+            <!--Кнопка для удаления конференции-->
             <form action="/delete" method="post" class="f-inline">
                 <input type="hidden" value="<?= $el['id']?>" name="id">
                 <button type="submit" class="btn btn-danger">Delete</button>
@@ -53,9 +58,8 @@
     <?php endforeach; ?>
     </tbody>
 </table>
-
 </body>
-
+<!--Подключение футера страницы-->
 <footer><?php include_once 'layout/footer.php'; ?></footer>
 </html>
 

@@ -10,7 +10,7 @@
     <style><?php include 'style/app.css'?></style>
     <title>Главная</title>
 </head>
-
+<!--Подключение шапки страницы-->
 <header><?php include_once 'layout/header.php'; ?></header>
 
 <body>
@@ -41,11 +41,13 @@
     </div>
     <hr>
     <div class="center-btn">
+        <!--Кнопка для изменения конференции-->
         <form action="/change_page" method="get" class="f-inline">
             <input type="hidden" value="<?=$el['id']?>" name="id">
             <button class="btn btn-warning">Modify</button>
         </form>
 
+        <!--Кнопка для удаления конференции-->
         <form action="/delete" method="post" class="f-inline">
             <input type="hidden" value="<?=$el['id']?>" name="id">
             <button class="btn btn-danger">Delete</button>
@@ -53,12 +55,12 @@
     </div>
 </div>
 <?php endforeach;?>
-
+<!--Подключения js файла и карты-->
 <script><?php require_once 'style/app.js'?></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB-f9lZuh5R8fiXj5SRBETYEeWEdNwSUlE&callback=initMap"
         async defer>
 </script>
 </body>
-
+<!--Подключение футера страницы-->
 <footer><?php include_once 'layout/footer.php'; ?></footer>
 </html>
